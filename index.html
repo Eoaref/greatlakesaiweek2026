@@ -140,6 +140,22 @@
   ul.links li { margin-bottom: 10px; }
   ul.links .src { color: var(--muted); font-size: 14.5px; }
 
+  /* Roadmap at a glance */
+  .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rstop { background: var(--card); border: 1px solid var(--line); border-top: 5px solid var(--rust); border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; }
+  .rstop .head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .rstop .n { width: 34px; height: 34px; border-radius: 50%; background: var(--rust); color: #FFFDF8; font-weight: 700; display: grid; place-items: center; flex: none; }
+  .rstop h3 { font-family: var(--serif); font-size: 24px; margin: 0; }
+  .rstop .goal { color: var(--rust); font-weight: 600; margin: 4px 0 10px; font-size: 15.5px; }
+  .rstop ul { margin: 0 0 14px; padding-left: 18px; color: var(--ink-soft); font-size: 15px; }
+  .rstop ul li { margin-bottom: 6px; }
+  .rstop .ask { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 15px; font-style: italic; }
+  .rstop .ask b { color: var(--rust); font-style: normal; }
+  .loopback { text-align: center; color: var(--rust); font-style: italic; margin: 12px 0; font-size: 16px; }
+  .band { border: 1.5px solid var(--rust); border-radius: 12px; padding: 12px 18px; text-align: center; font-size: 15.5px; }
+  .band b { color: var(--rust); }
+  @media (max-width: 760px) { .roadmap { grid-template-columns: 1fr; } }
+
   footer { margin-top: 56px; background: var(--ink); color: var(--on-navy-soft); padding: 40px 0; font-size: 15px; }
   footer h2 { color: var(--on-navy); font-size: 28px; margin-bottom: 14px; }
   footer a { color: var(--peach); }
@@ -154,18 +170,20 @@
   <div class="wrap">
     <p class="eyebrow">Great Lakes AI Week 2026 · Bowling Green State University</p>
     <h1>Planned, Structured, Supervised</h1>
-    <p class="sub">A practical roadmap for AI integration in teaching and learning. Session resources.</p>
+    <p class="sub">A practical roadmap for human-centered AI integration in teaching and learning: AI where it serves learning, and not where it doesn’t. Session resources.</p>
     <p class="byline"><strong>Enas Aref, MPM, AEP</strong> · Assistant Teaching Professor, Bowling Green State University</p>
   </div>
 </header>
 
 <nav class="jump" aria-label="Sections">
   <ul>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#audit">Self-audit</a></li>
     <li><a href="#planned">Planned</a></li>
     <li><a href="#structured">Structured</a></li>
     <li><a href="#supervised">Supervised</a></li>
     <li><a href="#policy">Policy</a></li>
+    <li><a href="#reading">Reading</a></li>
     <li><a href="#data">Data</a></li>
     <li><a href="#connect">Connect</a></li>
   </ul>
@@ -173,14 +191,56 @@
 
 <main class="wrap">
 
+  <section id="roadmap">
+    <div class="section-head"><h2>The roadmap at a glance</h2></div>
+    <p class="lead">Take it, adapt it, and start with one learning objective. <a href="PSS_Roadmap_Enas_Aref.pptx">Download the editable one-page slide (PowerPoint)</a>.</p>
+    <div class="roadmap">
+      <div class="rstop">
+        <div class="head"><span class="n">1</span><h3>Planned</h3></div>
+        <p class="goal">Start from learning outcomes</p>
+        <ul>
+          <li>Map AI from program to course, module, and lesson</li>
+          <li>Decide AI’s role for each outcome</li>
+          <li>Protect foundational knowledge</li>
+          <li>Revise outcomes when AI changes them</li>
+        </ul>
+        <p class="ask"><b>Ask:</b> Do I know what role AI plays in my learning objectives?</p>
+      </div>
+      <div class="rstop">
+        <div class="head"><span class="n">2</span><h3>Structured</h3></div>
+        <p class="goal">Design how AI enters</p>
+        <ul>
+          <li>Choose a stance: formal, optional, or AI as subject</li>
+          <li>Build with purpose: agents, simulations, prompts</li>
+          <li>Add guardrails: boundary statement, custom GPT or Gem</li>
+          <li>Give students who opt out an equivalent path</li>
+        </ul>
+        <p class="ask"><b>Ask:</b> Have I designed AI’s place, or am I reacting to it?</p>
+      </div>
+      <div class="rstop">
+        <div class="head"><span class="n">3</span><h3>Supervised</h3></div>
+        <p class="goal">Assess learning, close the loop</p>
+        <ul>
+          <li>Collect evidence: transcripts, drafts, reflections</li>
+          <li>Assess the process with the Human-AI Collaboration Rubric</li>
+          <li>Students report their use with LTTR</li>
+          <li>Feed findings back into the plan</li>
+        </ul>
+        <p class="ask"><b>Ask:</b> How do I know what students actually learned?</p>
+      </div>
+    </div>
+    <p class="loopback">↻ Assess, then revise the plan</p>
+    <p class="band"><b>In every course:</b> AI literacy · ethical framing · respect for student choice · learning before tools</p>
+  </section>
+
   <section id="audit">
     <div class="section-head"><h2>Start with the self-audit</h2></div>
     <p class="lead">One question at each stop on the roadmap. Answer them for one course you teach.</p>
     <div class="audit">
       <ol>
-        <li><span class="stop">1 · Planned</span><span class="q">Do I know what my program expects graduates to do with AI?</span></li>
+        <li><span class="stop">1 · Planned</span><span class="q">Do I know what role AI plays in at least one of my learning objectives?</span></li>
         <li><span class="stop">2 · Structured</span><span class="q">Have I designed how AI enters my course (or stays out), or am I reacting to it?</span></li>
-        <li><span class="stop">3 · Supervised</span><span class="q">When students use AI, what do I actually look at afterward?</span></li>
+        <li><span class="stop">3 · Supervised</span><span class="q">When students use AI, how do I know what they actually learned?</span></li>
       </ol>
       <p class="foot">If you’ve planned it, structured it, and followed up on it, you’re on the right track. If not, pick one question and start there.</p>
     </div>
@@ -188,7 +248,8 @@
 
   <section id="planned">
     <div class="section-head"><span class="num">01</span><h2>Planned</h2></div>
-    <p class="lead">Decisions start at the program level and cascade to the course and the assignment: what graduates should be able to do with AI, what role AI plays in each course, and where students may use it.</p>
+    <p class="lead">Start from learning outcomes, not from the tool. Planning cascades from the program to the course, the module, and the lesson. Programs may not be ready yet, but every course can be ready at the level of its own learning objectives.</p>
+    <div class="callout" style="margin:0 0 20px"><strong>Protect foundational knowledge.</strong> Students can’t judge AI output on a topic they don’t yet know. As I tell my students: if AI gives you a shortcut to a course or module learning outcome, you are harming yourself with the way you use it.</div>
     <div class="grid">
       <article class="card feature">
         <span class="tag">Guide</span>
@@ -225,8 +286,33 @@
       <li><b>Integrate</b><span>Deploy with a policy, boundaries, and follow-up</span></li>
     </ol>
 
-    <h3 style="margin-top:32px">Try the agents</h3>
-    <p style="margin:0 0 14px;color:var(--ink-soft)">Each agent is designed to guide thinking rather than hand out answers. The ChatGPT agents require a free ChatGPT account; the Gem requires a Google account.</p>
+    <h3 style="margin-top:32px">AI that assists faculty</h3>
+    <p style="margin:0 0 14px;color:var(--ink-soft)">Agents that help educators design and create. ChatGPT agents need a free ChatGPT account; the Gem needs a Google account.</p>
+    <div class="grid">
+      <article class="card feature">
+        <span class="tag rust">Shown in session</span>
+        <h3>The Fact-O-Fictionist Story Problems</h3>
+        <p>Generates story-driven engineering problems; an intake checklist keeps output aligned with learning objectives.</p>
+        <a class="go" href="https://chatgpt.com/g/g-694c7b5a2ed08191add0d50d49f71d0c-the-fact-o-fictionist-story-problems">Open in ChatGPT</a>
+        <a class="go" style="padding-top:0" href="https://peer.asee.org/designing-story-driven-and-ai-augmented-instruction-a-pedagogical-approach-to-contextualizing-engineering-education-work-in-progress">Read the paper (ASEE 2026)</a>
+      </article>
+      <article class="card feature">
+        <span class="tag rust">Shown in session</span>
+        <h3>Trauma-Informed &amp; Care Pedagogy Assistant</h3>
+        <p>Helps faculty apply trauma-informed and care-based teaching practices.</p>
+        <a class="go" href="https://chatgpt.com/g/g-68af246c68fc8191bf1103b8f1c0fafb-trauma-informed-care-pedagogy-assistant">Open in ChatGPT</a>
+        <a class="go" style="padding-top:0" href="https://doi.org/10.1080/07294360.2026.2617298">Read the paper (HERD, 2026)</a>
+      </article>
+      <article class="card">
+        <span class="tag">Educator agent</span>
+        <h3>New Course Development</h3>
+        <p>Course design guidance grounded in UDL, backward design, care ethics, and Quality Matters.</p>
+        <a class="go" href="https://gemini.google.com/gem/1dsbf7I6MHocq9MPijKLrM94AduyYs3Fn?usp=sharing">Open in Gemini</a>
+      </article>
+    </div>
+
+    <h3 style="margin-top:32px">AI that assists students</h3>
+    <p style="margin:0 0 14px;color:var(--ink-soft)">Each agent is designed to guide thinking rather than hand out answers.</p>
     <div class="grid">
       <article class="card feature">
         <span class="tag rust">Shown in session</span>
@@ -239,18 +325,6 @@
         <h3>The Project Pal</h3>
         <p>Helps students reflect on and plan group projects, including team conflict, without giving direct answers.</p>
         <a class="go" href="https://chatgpt.com/g/g-67EtwaJDU-the-project-pal">Open in ChatGPT</a>
-      </article>
-      <article class="card">
-        <span class="tag">Educator agent</span>
-        <h3>The Fact-O-Fictionist Story Problems</h3>
-        <p>Generates story-driven engineering problems that put course concepts in context.</p>
-        <a class="go" href="https://chatgpt.com/g/g-694c7b5a2ed08191add0d50d49f71d0c-the-fact-o-fictionist-story-problems">Open in ChatGPT</a>
-      </article>
-      <article class="card">
-        <span class="tag">Educator agent</span>
-        <h3>New Course Development</h3>
-        <p>Theory-grounded guidance across the course development lifecycle.</p>
-        <a class="go" href="https://gemini.google.com/gem/1dsbf7I6MHocq9MPijKLrM94AduyYs3Fn?usp=sharing">Open in Gemini</a>
       </article>
     </div>
 
@@ -277,6 +351,20 @@
       <p>Many students want to use AI but aren’t sure how to do it without undermining their own learning. In an online people-management course, I offered students an optional, ungraded library of course-specific prompts. The goal was to give them a structured way to use AI that keeps them doing the thinking. Students chose whether to use it, and those who didn’t lost nothing. Students who declined, whether they preferred to learn independently or objected to AI on principle, were respected by the design. A paper describing the library and what students reported is forthcoming.</p>
     </div>
 
+    <h3 style="margin-top:24px">Writing course-specific prompts for your students</h3>
+    <p style="margin:0 0 12px;color:var(--ink-soft)">A good course prompt keeps the student doing the thinking. Before you share one, check that it:</p>
+    <ul class="links" style="margin-bottom:14px">
+      <li>Ties to a specific course or module learning objective</li>
+      <li>Asks the student to bring something of their own: a draft, an answer, an example</li>
+      <li>Asks AI to question, check, or critique, not to produce the graded work</li>
+      <li>Comes with a boundary statement: what the prompt is for, and what it is not for</li>
+    </ul>
+    <p style="margin:0 0 10px;color:var(--ink-soft)">Two generic starters to adapt to your course:</p>
+    <div class="grid">
+      <div class="card"><p><em>“I’m studying [concept] in [course]. Before you explain anything, ask me three questions to check what I already understand. Then tell me where my answers were incomplete.”</em></p></div>
+      <div class="card"><p><em>“Here is my explanation of [concept] for someone new to the field: [your draft]. Point out what is unclear or inaccurate, but don’t rewrite it for me.”</em></p></div>
+    </div>
+
     <h3 style="margin-top:32px">If your course restricts AI</h3>
     <div class="grid">
       <article class="card">
@@ -295,7 +383,7 @@
       <article class="card feature">
         <span class="tag">Paper · ASEE 2024</span>
         <h3>Team Dynamics and Conflict Resolution: Integrating GenAI in Project-Based Learning</h3>
-        <p>Introduces the Foundational Framework for GenAI Literacy and Deployment (Access, Learn, Explore and Apply, Reflect, Adopt) and the 210-point Human-AI Collaboration Rubric.</p>
+        <p>The AI literacy module, the Foundational Framework for GenAI Literacy and Deployment (Access, Learn, Explore and Apply, Reflect, Adopt), and the 210-point Human-AI Collaboration Rubric: 110 points for human tasks, 100 for AI-supported tasks.</p>
         <a class="go" href="https://doi.org/10.18260/1-2--48074">Read the paper</a>
       </article>
     </div>
@@ -309,6 +397,14 @@
       <div><b>Transparent</b><p>Disclose when and how AI was used.</p></div>
       <div><b>Traceable</b><p>Keep the drafts, prompts, and reflections that show the thinking.</p></div>
       <div><b>Responsible</b><p>Ask not only whether you can use AI, but whether you should.</p></div>
+    </div>
+    <div class="grid" style="margin-top:20px">
+      <article class="card feature">
+        <span class="tag">Book chapter</span>
+        <h3>Ethics by Design: From Compliance to Conscience</h3>
+        <p>My chapter in the <em>Manifesto for Generative AI in Higher Education</em>: designing learning environments that support ethical AI use, and where the LTTR framework comes from.</p>
+        <a class="go" href="https://pressbooks.pub/mfaihe/">Open the Manifesto</a>
+      </article>
     </div>
     <h3 style="margin-top:32px">For industry and assessment</h3>
     <div class="grid">
@@ -327,8 +423,17 @@
     </div>
   </section>
 
+  <section id="reading">
+    <div class="section-head"><span class="num">05</span><h2>Further reading</h2></div>
+    <ul class="links">
+      <li><a href="https://www.qualitymatters.org/sites/default/files/PDFs/StandardsfromtheQMHigherEducationRubric.pdf">Quality Matters Higher Education Rubric, 7th edition</a> <span class="src">· Standard 2: measurable, aligned learning objectives suited to the course level</span></li>
+      <li><a href="https://library.educause.edu/resources/2024/10/abstract-ai-literacy-in-teaching-and-learning-executive-summary-an-educause-working-group-paper">EDUCAUSE: AI Literacy in Teaching and Learning (2024)</a> <span class="src">· a working group framework for faculty, staff, and students</span></li>
+      <li><a href="https://doi.org/10.1145/3313831.3376727">Long &amp; Magerko (2020): What Is AI Literacy?</a> <span class="src">· the widely cited definition of AI literacy competencies</span></li>
+    </ul>
+  </section>
+
   <section id="data">
-    <div class="section-head"><span class="num">05</span><h2>Data cited in the session</h2></div>
+    <div class="section-head"><span class="num">06</span><h2>Data cited in the session</h2></div>
     <ul class="links">
       <li><a href="https://www.edtechinnovationhub.com/news/q6zw9wco2mttajdbd1jyeonjnpiovu">Digital Education Council, AI in Higher Education Global Survey 2026</a> <span class="src">· 88% of students and 77% of faculty use AI; 29% of students say instructors are equipped to guide them</span></li>
       <li><a href="https://www.elon.edu/u/news/2026/01/21/elon-aacu-national-survey-95-of-college-faculty-fear-student-overreliance-on-ai/">Elon University and AAC&amp;U national faculty survey, 2026</a> <span class="src">· 68% of faculty say their institution hasn’t prepared them to teach with AI</span></li>
@@ -346,7 +451,7 @@
       <li><a href="https://eoaref.github.io/ai-portfolio/">Full AI portfolio</a></li>
       <li><a href="https://scholar.google.com/citations?hl=en&amp;user=EgHXdvQAAAAJ">Google Scholar</a></li>
       <li><a href="https://www.researchgate.net/profile/Enas-Aref">ResearchGate</a></li>
-      <li><a href="https://www.linkedin.com/in/enasaref/">LinkedIn</a></li>
+      <li><a href="https://www.linkedin.com/in/phdindergo17/">LinkedIn</a></li>
       <li><a href="https://enasaref.substack.com/">Substack</a></li>
     </ul>
     <p class="fine">AI disclosure: I planned and structured this page; Claude (Anthropic) helped organize the content and write the code, and I reviewed every section. All frameworks, agents, and examples are my own work. © 2026 Enas Aref. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.</p>
