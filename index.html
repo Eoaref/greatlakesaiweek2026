@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planned, Structured, Supervised | Session Resources | Enas Aref</title>
+<meta name="description" content="Resources from Enas Aref's Great Lakes AI Week 2026 session at Bowling Green State University: a practical roadmap for planned, structured, and supervised AI integration in teaching and learning.">
+<meta property="og:title" content="Planned, Structured, Supervised: Session Resources">
+<meta property="og:description" content="Frameworks, custom AI agents, simulations, and guides from Enas Aref's Great Lakes AI Week 2026 session.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:wght@400..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C2433;
+    --ink-soft: #4A5260;
+    --muted: #6A7280;
+    --paper: #F7F4EE;
+    --paper-2: #ECE6DA;
+    --card: #FFFDF8;
+    --line: #DDD5C6;
+    --blue: #2B5D8A;
+    --rust: #B8471F;
+    --peach: #F0A47A;
+    --navy-2: #26324A;
+    --on-navy: #F7F4EE;
+    --on-navy-soft: #B9C2CF;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: Inter, "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-underline-offset: 3px; }
+  a:hover { color: var(--rust); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero */
+  header.hero { background: var(--ink); color: var(--on-navy); padding: 56px 0 48px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--peach); margin: 0 0 16px;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 600; font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.05; margin: 0 0 16px;
+  }
+  .hero .sub { font-size: clamp(18px, 2.6vw, 22px); color: var(--on-navy-soft); margin: 0 0 28px; max-width: 46ch; }
+  .byline { font-size: 15px; color: var(--on-navy-soft); margin: 0; }
+  .byline strong { color: var(--on-navy); }
+
+  /* Jump nav */
+  nav.jump {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(247, 244, 238, 0.96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.jump ul {
+    list-style: none; margin: 0 auto; padding: 10px 20px; max-width: 980px;
+    display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+  }
+  nav.jump ul::-webkit-scrollbar { display: none; }
+  nav.jump a {
+    display: block; white-space: nowrap; text-decoration: none; color: var(--ink);
+    font-size: 14px; font-weight: 600; padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--card);
+  }
+  nav.jump a:hover { border-color: var(--rust); color: var(--rust); }
+
+  section { padding: 48px 0 8px; scroll-margin-top: 56px; }
+  .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .num { font-family: var(--serif); font-weight: 600; font-size: 20px; color: var(--rust); }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(28px, 4.5vw, 38px); line-height: 1.15; margin: 0; }
+  .lead { color: var(--ink-soft); margin: 0 0 24px; max-width: 64ch; }
+  h3 { font-size: 18px; font-weight: 700; margin: 0 0 6px; line-height: 1.3; }
+
+  /* Self-audit */
+  .audit { background: var(--ink); color: var(--on-navy); border-radius: 16px; padding: 28px; margin-top: 8px; }
+  .audit ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; }
+  .audit li { display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: baseline; }
+  .audit .stop { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--peach); }
+  .audit .q { font-family: var(--serif); font-size: 21px; line-height: 1.35; }
+  .audit .foot { margin: 22px 0 0; color: var(--on-navy-soft); font-size: 15px; }
+
+  /* Cards */
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .card p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+  .tag {
+    align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blue); background: #E3ECF4; padding: 3px 10px; border-radius: 999px;
+  }
+  .tag.rust { color: var(--rust); background: #F8E4DA; }
+  .card .go {
+    margin-top: auto; padding-top: 8px; font-weight: 600; font-size: 15px; text-decoration: none;
+  }
+  .card .go::after { content: " \2192"; }
+  .card.feature { border-left: 6px solid var(--rust); }
+
+  /* Video */
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: var(--ink); margin-bottom: 12px; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* PCTII steps */
+  .steps { display: grid; gap: 10px; grid-template-columns: repeat(5, 1fr); margin: 4px 0 14px; padding: 0; list-style: none; }
+  .steps li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  .steps li.hl { background: var(--rust); border-color: var(--rust); color: #FFFDF8; }
+  .steps b { display: block; font-size: 16px; }
+  .steps span { font-size: 14px; color: var(--ink-soft); line-height: 1.4; display: block; margin-top: 4px; }
+  .steps li.hl span { color: #FBE3D6; }
+  @media (max-width: 760px) {
+    .steps { grid-template-columns: 1fr; }
+    .audit li { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  .callout {
+    background: var(--paper-2); border-radius: 14px; padding: 20px 22px; margin-top: 16px;
+    font-size: 15.5px; color: var(--ink-soft);
+  }
+  .callout strong { color: var(--ink); }
+
+  /* LTTR */
+  .lttr { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .lttr div { background: var(--card); border-top: 5px solid var(--blue); border-radius: 12px; padding: 18px; }
+  .lttr b { font-family: var(--serif); font-size: 22px; color: var(--blue); display: block; margin-bottom: 4px; }
+  .lttr p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+  ul.links { margin: 0; padding-left: 20px; }
+  ul.links li { margin-bottom: 10px; }
+  ul.links .src { color: var(--muted); font-size: 14.5px; }
+
+  footer { margin-top: 56px; background: var(--ink); color: var(--on-navy-soft); padding: 40px 0; font-size: 15px; }
+  footer h2 { color: var(--on-navy); font-size: 28px; margin-bottom: 14px; }
+  footer a { color: var(--peach); }
+  footer a:hover { color: var(--on-navy); }
+  .contact { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 28px; padding: 0; list-style: none; }
+  .fine { font-size: 13.5px; line-height: 1.55; border-top: 1px solid var(--navy-2); padding-top: 20px; margin: 0; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Great Lakes AI Week 2026 · Bowling Green State University</p>
+    <h1>Planned, Structured, Supervised</h1>
+    <p class="sub">A practical roadmap for AI integration in teaching and learning. Session resources.</p>
+    <p class="byline"><strong>Enas Aref, MPM, AEP</strong> · Assistant Teaching Professor, Bowling Green State University</p>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Sections">
+  <ul>
+    <li><a href="#audit">Self-audit</a></li>
+    <li><a href="#planned">Planned</a></li>
+    <li><a href="#structured">Structured</a></li>
+    <li><a href="#supervised">Supervised</a></li>
+    <li><a href="#policy">Policy</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+  <section id="audit">
+    <div class="section-head"><h2>Start with the self-audit</h2></div>
+    <p class="lead">One question at each stop on the roadmap. Answer them for one course you teach.</p>
+    <div class="audit">
+      <ol>
+        <li><span class="stop">1 · Planned</span><span class="q">Do I know what my program expects graduates to do with AI?</span></li>
+        <li><span class="stop">2 · Structured</span><span class="q">Have I designed how AI enters my course (or stays out), or am I reacting to it?</span></li>
+        <li><span class="stop">3 · Supervised</span><span class="q">When students use AI, what do I actually look at afterward?</span></li>
+      </ol>
+      <p class="foot">If you’ve planned it, structured it, and followed up on it, you’re on the right track. If not, pick one question and start there.</p>
+    </div>
+  </section>
+
+  <section id="planned">
+    <div class="section-head"><span class="num">01</span><h2>Planned</h2></div>
+    <p class="lead">Decisions start at the program level and cascade to the course and the assignment: what graduates should be able to do with AI, what role AI plays in each course, and where students may use it.</p>
+    <div class="grid">
+      <article class="card feature">
+        <span class="tag">Guide</span>
+        <h3>Planned, Structured, Supervised: Student-AI Interaction</h3>
+        <p>The roadmap behind this session, published as faculty guidance at Western Michigan University.</p>
+        <a class="go" href="https://wmich.edu/x/teaching-learning/teaching-resources/student-ai-interaction">Read the guide</a>
+      </article>
+      <article class="card">
+        <span class="tag">Guide</span>
+        <h3>AI and Critical Thinking in Education</h3>
+        <p>How to keep AI use from replacing the thinking a course is meant to build.</p>
+        <a class="go" href="https://wmich.edu/x/teaching-learning/teaching-resources/ai-critical-thinking">Read the guide</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="structured">
+    <div class="section-head"><span class="num">02</span><h2>Structured</h2></div>
+    <p class="lead">Use AI or restrict it, but by design. Below are the structures shown in the session: custom agents, a prompt library, and AI-built simulations.</p>
+
+    <h3 style="margin-top:8px">Build an AI agent for your course</h3>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/_1PetS4YXDM" title="How to Create an AI Intelligent Agent for Your Course" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p style="margin:0 0 28px"><a href="https://www.youtube.com/watch?v=_1PetS4YXDM">How to Create an AI Intelligent Agent for Your Course</a> (video walkthrough) · Paper: <a href="https://doi.org/10.13140/RG.2.2.33418.99522">Empowering Engineering Educators: Build and Implement a Custom AI Assistant</a>, ASEE North Central Section Conference, 2025</p>
+
+    <h3>The PCTII model</h3>
+    <p style="margin:0 0 12px;color:var(--ink-soft)">A code-free design cycle for custom educational AI agents, presented in previous workshops and invited talks. It works for a custom GPT, a Gemini Gem, or a Claude Project.</p>
+    <ol class="steps">
+      <li><b>Prepare</b><span>Define the goal, the outcomes, and why the agent is needed</span></li>
+      <li><b>Create</b><span>Write instructions, conversation starters, and boundaries</span></li>
+      <li class="hl"><b>Test</b><span>Test from several roles, including a student trying to misuse it</span></li>
+      <li><b>Improve</b><span>Refine based on what testing revealed</span></li>
+      <li><b>Integrate</b><span>Deploy with a policy, boundaries, and follow-up</span></li>
+    </ol>
+
+    <h3 style="margin-top:32px">Try the agents</h3>
+    <p style="margin:0 0 14px;color:var(--ink-soft)">Each agent is designed to guide thinking rather than hand out answers. The ChatGPT agents require a free ChatGPT account; the Gem requires a Google account.</p>
+    <div class="grid">
+      <article class="card feature">
+        <span class="tag rust">Shown in session</span>
+        <h3>Management and Organizational Behavior Simulation</h3>
+        <p>Students practice leadership and team decisions in case scenarios. The agent asks probing questions instead of giving answers.</p>
+        <a class="go" href="https://chatgpt.com/g/g-j5DgkpWWT-management-and-organizational-behavior-simulation">Open in ChatGPT</a>
+      </article>
+      <article class="card">
+        <span class="tag">Student agent</span>
+        <h3>The Project Pal</h3>
+        <p>Helps students reflect on and plan group projects, including team conflict, without giving direct answers.</p>
+        <a class="go" href="https://chatgpt.com/g/g-67EtwaJDU-the-project-pal">Open in ChatGPT</a>
+      </article>
+      <article class="card">
+        <span class="tag">Educator agent</span>
+        <h3>The Fact-O-Fictionist Story Problems</h3>
+        <p>Generates story-driven engineering problems that put course concepts in context.</p>
+        <a class="go" href="https://chatgpt.com/g/g-694c7b5a2ed08191add0d50d49f71d0c-the-fact-o-fictionist-story-problems">Open in ChatGPT</a>
+      </article>
+      <article class="card">
+        <span class="tag">Educator agent</span>
+        <h3>New Course Development</h3>
+        <p>Theory-grounded guidance across the course development lifecycle.</p>
+        <a class="go" href="https://gemini.google.com/gem/1dsbf7I6MHocq9MPijKLrM94AduyYs3Fn?usp=sharing">Open in Gemini</a>
+      </article>
+    </div>
+
+    <h3 style="margin-top:32px">AI-built simulations</h3>
+    <p style="margin:0 0 14px;color:var(--ink-soft)">Here AI works behind the scenes: it helped build the teaching tool, and students never chat with it. No account needed.</p>
+    <div class="grid">
+      <article class="card feature">
+        <span class="tag rust">Shown in session</span>
+        <h3>Process Capability Simulation</h3>
+        <p>Students move the spec limits, process mean, and spread, and watch Cp, Cpk, and defects per million change. Preset scenarios and discussion cases connect the numbers to real decisions.</p>
+        <a class="go" href="https://eoaref.github.io/Process-Capability-Simulation/">Open the simulation</a>
+      </article>
+      <article class="card">
+        <span class="tag">Worked example</span>
+        <h3>One Dataset, Four Tools</h3>
+        <p>One shop-floor dataset, four questions: when to use a Pareto chart, control chart, histogram, or scatter diagram. Ends with a practice quiz.</p>
+        <a class="go" href="https://eoaref.github.io/Quality-Tools-Selection/index.html">Open the example</a>
+      </article>
+    </div>
+    <div class="callout"><strong>Notice the credit line on each simulation:</strong> “the instructor planned and structured the interactive example,” and AI wrote the code. That division of labor is the roadmap in practice.</div>
+
+    <h3 style="margin-top:32px">A prompt library for ethical, learning-centered AI use</h3>
+    <div class="card" style="margin-top:6px">
+      <p>Many students want to use AI but aren’t sure how to do it without undermining their own learning. In an online people-management course, I offered students an optional, ungraded library of course-specific prompts. The goal was to give them a structured way to use AI that keeps them doing the thinking. Students chose whether to use it, and those who didn’t lost nothing. Students who declined, whether they preferred to learn independently or objected to AI on principle, were respected by the design. A paper describing the library and what students reported is forthcoming.</p>
+    </div>
+
+    <h3 style="margin-top:32px">If your course restricts AI</h3>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">Guide</span>
+        <h3>Implementation Guidance for AI-Restricted Courses</h3>
+        <p>Restriction is a structure too, when it is designed, explained, and paired with AI literacy.</p>
+        <a class="go" href="https://wmich.edu/x/teaching-learning/teaching-resources/guidance-ai-restricted-courses">Read the guide</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="supervised">
+    <div class="section-head"><span class="num">03</span><h2>Supervised</h2></div>
+    <p class="lead">When students use AI, follow up: chat transcripts show the process, written reflection shows what they kept, changed, rejected, and verified, and a rubric assesses the collaboration itself.</p>
+    <div class="grid">
+      <article class="card feature">
+        <span class="tag">Paper · ASEE 2024</span>
+        <h3>Team Dynamics and Conflict Resolution: Integrating GenAI in Project-Based Learning</h3>
+        <p>Introduces the Foundational Framework for GenAI Literacy and Deployment (Access, Learn, Explore and Apply, Reflect, Adopt) and the 210-point Human-AI Collaboration Rubric.</p>
+        <a class="go" href="https://doi.org/10.18260/1-2--48074">Read the paper</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="policy">
+    <div class="section-head"><span class="num">04</span><h2>Policy and student choice</h2></div>
+    <p class="lead">A course AI policy can rest on four words, the LTTR framework. Students who opt out of AI get an equivalent path to every learning outcome.</p>
+    <div class="lttr">
+      <div><b>Literate</b><p>Know the tools, the rules, and how to judge the output.</p></div>
+      <div><b>Transparent</b><p>Disclose when and how AI was used.</p></div>
+      <div><b>Traceable</b><p>Keep the drafts, prompts, and reflections that show the thinking.</p></div>
+      <div><b>Responsible</b><p>Ask not only whether you can use AI, but whether you should.</p></div>
+    </div>
+    <h3 style="margin-top:32px">For industry and assessment</h3>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">Preprint</span>
+        <h3>Beyond Algorithms: A Framework for Ethical Assessment of AI Applications in Industry</h3>
+        <p>A staged process for deciding whether an AI system is ethically acceptable, needs remediation, or should be halted.</p>
+        <a class="go" href="https://www.qeios.com/read/3RHK4F">Read on Qeios</a>
+      </article>
+      <article class="card">
+        <span class="tag">Preprint</span>
+        <h3>(Re)Defining Ethical Assessment with the Advent of GenAI</h3>
+        <p>Rethinking how we assess student work when generative AI is available.</p>
+        <a class="go" href="https://doi.org/10.35542/osf.io/zp458_v1">Read on EdArXiv</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="data">
+    <div class="section-head"><span class="num">05</span><h2>Data cited in the session</h2></div>
+    <ul class="links">
+      <li><a href="https://www.edtechinnovationhub.com/news/q6zw9wco2mttajdbd1jyeonjnpiovu">Digital Education Council, AI in Higher Education Global Survey 2026</a> <span class="src">· 88% of students and 77% of faculty use AI; 29% of students say instructors are equipped to guide them</span></li>
+      <li><a href="https://www.elon.edu/u/news/2026/01/21/elon-aacu-national-survey-95-of-college-faculty-fear-student-overreliance-on-ai/">Elon University and AAC&amp;U national faculty survey, 2026</a> <span class="src">· 68% of faculty say their institution hasn’t prepared them to teach with AI</span></li>
+      <li><a href="https://www.naceweb.org/about-us/press/2026/ready-or-reluctant-employer-expectations-for-ai-skills-meet-student-skepticism">NACE, employer expectations for AI skills, 2026</a> <span class="src">· more than one-third of entry-level jobs require AI skills</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer id="connect">
+  <div class="wrap">
+    <h2>Connect</h2>
+    <ul class="contact">
+      <li><a href="mailto:earef@bgsu.edu">earef@bgsu.edu</a></li>
+      <li><a href="https://eoaref.github.io/ai-portfolio/">Full AI portfolio</a></li>
+      <li><a href="https://scholar.google.com/citations?hl=en&amp;user=EgHXdvQAAAAJ">Google Scholar</a></li>
+      <li><a href="https://www.researchgate.net/profile/Enas-Aref">ResearchGate</a></li>
+      <li><a href="https://www.linkedin.com/in/phdindergo17/">LinkedIn</a></li>
+      <li><a href="https://enasaref.substack.com/">Substack</a></li>
+    </ul>
+    <p class="fine">AI disclosure: I planned and structured this page; Claude (Anthropic) helped organize the content and write the code, and I reviewed every section. All frameworks, agents, and examples are my own work. © 2026 Enas Aref. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
